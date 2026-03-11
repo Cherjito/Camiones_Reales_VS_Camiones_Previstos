@@ -1,2 +1,44 @@
-# Camiones_Reales_VS_Camiones_Previstos
-Analizador de desviaciones logísticas en Python que simula la llegada prevista de camiones a un centro logístico y la compara con la operativa real para calcular la estabilidad del almacén mediante desviaciones típicas, probabilidad binomial y KPIs exportables.
+# Gestión de Flujos Logísticos: Análisis de Desviaciones y Estabilidad Operativa (LLegadas Reales Vs Previstas)
+
+Este proyecto es una herramienta avanzada de **Business Intelligence** desarrollada en Python. Su objetivo es monitorizar la eficiencia de un centro logístico comparando la planificación (camiones previstos) con la operativa real (camiones que han llegado), detectando así niveles de inestabilidad mediante análisis estadístico.
+
+## Propósito del Proyecto y lógica de negocio
+En el sector de la **Logística y Supply Chain**, la variabilidad es el factor que más encarece la operativa, ya que un flujo inestable puede provocar sobrecoste por horas extra o tiempos muertos, cuellos de botella por saturación de muelles o falta de fiabilidad en la previsión que genera incapacidad para comprometrse con plazos de entrega.
+Este programa no solo registra datos, sino que evalúa la **estabilidad del almacén**. Un flujo con alta desviación estándar indica una operativa caótica, dificultando la planificación de recursos humanos y maquinaria.
+
+## Funcionalidades Clave
+
+### 1. Gestión Inteligente de Datos (SQL + CSV)
+El sistema utiliza **SQLite** para asegurar la integridad de la línea temporal, calculando automáticamente la fecha siguiente a la última registrada. Los datos se exportan a un histórico CSV para mantener un registro auditable de cada jornada.
+
+### 2. Análisis Estadístico y KPIs
+El motor de análisis calcula automáticamente:
+* **Tasa de Cumplimiento (Bernoulli):** Porcentaje de días en los que se alcanzó el objetivo previsto.
+* **Probabilidad Binomial:** Calcula la probabilidad exacta de éxito en escenarios futuros (ej: *"¿Qué probabilidad hay de cumplir el objetivo 4 de los próximos 5 días?"*).
+* **Análisis de Variabilidad:** Uso de **Varianza** y **Desviación Estándar** para diagnosticar la salud del flujo logístico.
+
+### 3. Diagnóstico de Operativa
+El programa categoriza el estado del almacén en tiempo real:
+* **Estable:** Flujo constante y predecible.
+* **Inestable:** Variaciones moderadas que requieren atención.
+* **Estado Caótico:** Alta variabilidad que impide una planificación eficiente.
+
+### 4. Preparado para Power BI / Tableau
+El script genera un archivo `resumen_kpis.csv` optimizado. Este archivo está diseñado para ser importado directamente en herramientas de visualización de datos, permitiendo la creación de dashboards corporativos.
+
+## 5.Ejemplo de Salida (datos inventados)
+```text
+--- INICIANDO ANÁLISIS DE DATOS ---
+El 2026-04-20, los camiones previstos eran 13 y realmente llegaron 15
+La diferencia es de 2 camiones
+La media de camiones previstos es de 14.50
+La media de camiones reales es de 16,2
+La probabilidad de éxito es del 60.00%
+La probabilidad de cumplir la previsión exactamente 4 de los próximos 5 días es del 25.92%
+Desviación estándar de 8.45 camiones
+Una operativa estable si situa entre 7.06 y 10,08 camiones (Intervalo de Confianza)
+> "Hay cierta inestabilidad con variaciones moderadas"
+Archivo KPIS exportado correctamente a resumen_kpis.csv
+```
+### **Desarrollado por Sergio Ruiz Gutiérrez**
+*Optimización de Procesos y Análisis de Datos aplicados a la Supply Chain*
