@@ -5,6 +5,14 @@ Este proyecto es una herramienta avanzada de **Business Intelligence** desarroll
 ## Propósito del Proyecto y lógica de negocio
 En el sector de la **Logística y Supply Chain**, la variabilidad es el factor que más encarece la operativa, ya que un flujo inestable puede provocar sobrecoste por horas extra o tiempos muertos, cuellos de botella por saturación de muelles o falta de fiabilidad en la previsión que genera incapacidad para comprometrse con plazos de entrega.
 Este programa no solo registra datos, sino que evalúa la **estabilidad del almacén**. Un flujo con alta desviación estándar indica una operativa caótica, dificultando la planificación de recursos humanos y maquinaria.
+## Estructura de Archivos y Flujo de Datos
+
+Para el correcto funcionamiento del sistema, el proyecto se organiza en los siguientes archivos:
+
+* **`prevision.py`**: Es el motor principal del proyecto. Contiene la lógica de conexión a la base de datos, el simulador de llegadas, el procesamiento estadístico con Pandas y la generación de diagnósticos.
+* **`almacen.db`**: Base de datos relacional (SQLite). Almacena de forma persistente la fecha de cada operativa y el número de camiones simulados, garantizando la integridad de la línea temporal.
+* **`historico_entregas.csv`**: Registro histórico detallado. Almacena cada jornada con sus datos de previsión, realidad, diferencia y cumplimiento. Es la fuente de datos principal para el análisis de Pandas.
+* **`resumen_kpis.csv`**: Archivo de salida optimizado. Contiene los resultados del análisis (medias, desviaciones y probabilidades) listo para ser importado en herramientas de visualización como Power BI o Excel.
 
 ## Funcionalidades Clave
 
@@ -23,7 +31,7 @@ El programa categoriza el estado del almacén en tiempo real:
 * **Inestable:** Variaciones moderadas que requieren atención.
 * **Estado Caótico:** Alta variabilidad que impide una planificación eficiente.
 
-### 4. Preparado para Power BI / Tableau
+### 4. Preparado para Power Bi
 El script genera un archivo `resumen_kpis.csv` optimizado. Este archivo está diseñado para ser importado directamente en herramientas de visualización de datos, permitiendo la creación de dashboards corporativos.
 
 ## 5.Ejemplo de Salida (datos inventados)
