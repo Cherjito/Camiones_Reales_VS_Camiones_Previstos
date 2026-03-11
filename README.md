@@ -1,6 +1,6 @@
 # Gestión de Flujos Logísticos: Análisis de Desviaciones y Estabilidad Operativa (LLegadas Reales Vs Previstas)
 
-Este proyecto es una herramienta avanzada de **Business Intelligence** desarrollada en Python. Su objetivo es monitorizar la eficiencia de un centro logístico comparando la planificación (camiones previstos) con la operativa real (camiones que han llegado), detectando así niveles de inestabilidad mediante análisis estadístico.
+Este proyecto es una herramienta de **Business Intelligence** desarrollada en Python. Su objetivo es monitorizar la eficiencia de un centro logístico comparando la planificación (camiones previstos) con la operativa real (camiones que han llegado), detectando así niveles de inestabilidad mediante análisis estadístico.
 
 ## Propósito del Proyecto y lógica de negocio
 En el sector de la **Logística y Supply Chain**, la variabilidad es el factor que más encarece la operativa, ya que un flujo inestable puede provocar sobrecoste por horas extra o tiempos muertos, cuellos de botella por saturación de muelles o falta de fiabilidad en la previsión que genera incapacidad para comprometrse con plazos de entrega.
