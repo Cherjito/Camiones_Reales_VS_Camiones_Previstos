@@ -75,7 +75,7 @@ print(f"Desviación estandar de {desviacion_reales:.2f} camiones") #cuanto mas a
 #RANGOS (MEDIA+-DESVIACIÓN TÍPICA)
 rango_inferior=media_reales-desviacion_reales
 rango_superior=media_reales+desviacion_reales
-print(f"Una operativa normal se situa entre {rango_inferior:.2f} y {rango_superior:.2f} camiones")
+print(f"Una operativa estable se situa entre {rango_inferior:.2f} y {rango_superior:.2f} camiones")
 
 #COEFICIENTE DE VARIACIÓN Y ESTADO DEL ALMACEN
 cv = (desviacion_reales / media_reales) * 100 
