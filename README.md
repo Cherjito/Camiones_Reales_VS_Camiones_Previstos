@@ -36,7 +36,7 @@ El cálculo del estado se realiza mediante el Coeficiente de Variación (CV), qu
 En nuestro caso como **tenemos 3 estados**, hemos ajustado los porcentajes y hemos considerado **0%-25%, 25%-50% y más del 50%**. En cualquier caso ***se podrian modificar*** según las necesidades
 
 El rango de operativa estable se define estadísticamente como el intervalo donde se concentra el 68% de la actividad habitual (Media ± 1 Desviación Estándar), permitiendo identificar cualquier desviación fuera de estos límites como una anomalía operativa.
-Es decir que llegue un número de camiones que se situe en ese intervalo ocurre el 68% de las veces (dias)
+Es decir, que llegue un número de camiones que se situe en ese intervalo ocurre el 68% de las veces (dias)
 
 ### 4. Preparado para Power Bi
 El script genera un archivo `resumen_kpis.csv` optimizado. Este archivo está diseñado para ser importado directamente en herramientas de visualización de datos, permitiendo la creación de dashboards corporativos.
