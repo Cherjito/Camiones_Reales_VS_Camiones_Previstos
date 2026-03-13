@@ -32,7 +32,8 @@ El programa categoriza el estado del almacén en tiempo real:
 * **Inestable:** Variaciones moderadas que requieren atención.
 * **Estado Caótico:** Alta variabilidad que impide una planificación eficiente.
 
-El cálculo del estado se realiza mediante el Coeficiente de Variación (CV), que se define como el cociente entre la desviación estándar sigma y la media mu, siguiendo la fórmula CV =sigma\mu; se considera que los datos son homogéneos si el resultado es menor o igual al 30%, mientras que un valor superior indica que los datos son heterogéneos y presentan una alta dispersión. En nuestro caso como **tenemos 3 estados**, hemos ajustado los porcentajes y hemos considerado entre **0%-25%, entre 25%-50% y más del 50%**. En cualquier caso ***se podrian modificar*** según las necesidades
+El cálculo del estado se realiza mediante el Coeficiente de Variación (CV), que se define como el cociente entre la desviación estándar sigma y la media mu, siguiendo la fórmula CV =sigma\mu; se considera que los datos son homogéneos si el resultado es menor o igual al 30%, mientras que un valor superior indica que los datos son heterogéneos y presentan una alta dispersión. 
+En nuestro caso como **tenemos 3 estados**, hemos ajustado los porcentajes y hemos considerado entre **0%-25%, entre 25%-50% y más del 50%**. En cualquier caso ***se podrian modificar*** según las necesidades
 
 El rango de operativa estable se define estadísticamente como el intervalo donde se concentra el 68% de la actividad habitual (Media ± 1 Desviación Estándar), permitiendo identificar cualquier desviación fuera de estos límites como una anomalía operativa.
 
