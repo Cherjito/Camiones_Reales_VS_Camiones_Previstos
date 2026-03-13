@@ -5,8 +5,10 @@ from datetime import date, timedelta
 import os
 import pandas as pd
 from scipy.stats import binom
+
 nombre=input("Escribe tu nombre de operador: ")
 nombre=nombre[0:1].upper() + nombre[1:] #probando mayusculas
+
 with sqlite3.connect("almacen.db") as conn: #se escribe asi porq esto no es python, es sql aunq lo escribamos aqui
     conn.execute(""" CREATE TABLE IF NOT EXISTS entregas ( 
                  id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,6 +32,7 @@ camiones_reales=int(input(f"Hola {nombre}, escribe aqui las llegadas reales: "))
 diferencia=camiones_reales-camiones_simulados
 print(f"El {nueva_fecha}, los camiones previstos eran {camiones_simulados} y realmente llegaron {camiones_reales}")
 print(f"La diferencia es de {diferencia} camiones")
+
 if camiones_reales>=camiones_simulados:
     cumplimiento=1
 else:
@@ -45,10 +48,12 @@ print(f"Datos guardados en {archivo}")
 print("\---INICIANDO ANALISIS DE DATOS---")
 df=pd.read_csv(archivo)
 print(df)
+
                       ### AHORA EMPEZAMOS A CALCULAR LOS KPIS ###
 #Medias de los camiones
 media_previstos=df["Previstos"].mean()
 media_reales=df["Reales"].mean()
+
 # Tasa de exito (es decir que llegen al menos los previstos). Como es bernouilli, es la media de Cumplimiento
 probabilidad_exito=df["Cumplimiento"].mean()
 print(f"La media de camiones previstos es de {media_previstos:.2f}") #son iguales pero esta mejor para imprimir
@@ -59,23 +64,28 @@ print(f"La probabilidad de exito es del {probabilidad_exito*100:.2f}%")
 dias_futuros_n=5 #numero de ensayos
 dias_objetivo_k=4 #numero de exitos que queremos lograr en los 5 días(ensayos)
 prob_binomial=binom.pmf(dias_objetivo_k,dias_futuros_n,probabilidad_exito)
-print(f"La probabilidad de cumplor la previsión excatamente {dias_objetivo_k} de los proximos {dias_futuros_n} futuros es del {prob_binomial*100:.2f}%")
+print(f"La probabilidad de cumplir la previsión excatamente {dias_objetivo_k} de los proximos {dias_futuros_n} futuros es del {prob_binomial*100:.2f}%")
 
 #VARIANZAS Y DESVIACIONES
 varianzas_reales=df["Reales"].var() #lo que se alejan los datos de la media al cuadrado
 desviacion_reales=df["Reales"].std() 
 print(f"La varianza de llegadas es de {varianzas_reales:.2f}")
 print(f"Desviación estandar de {desviacion_reales:.2f} camiones") #cuanto mas alto más inestable
+
 #RANGOS (MEDIA+-DESVIACIÓN TÍPICA)
 rango_inferior=media_reales-desviacion_reales
 rango_superior=media_reales+desviacion_reales
 print(f"Una operativa estable se situa entre {rango_inferior:.2f} y {rango_superior:.2f} camiones")
-if desviacion_reales>10:
-    print("Estado caótico con mucha variación de datos y muy dificil de predecir")
-elif desviacion_reales>5:
-    print("Hay cierta inestabilidad con variaciones moderadas")
+
+#COEFICIENTE DE VARIACIÓN Y ESTADO DEL ALMACEN
+cv = (desviacion_reales / media_reales) * 100 
+if cv > 50:
+    print(f"Estado CAÓTICO: La variación ({cv:.1f}%) es altísima respecto a la media.")
+elif cv > 25:
+    print(f"Inestabilidad MODERADA: La variación ({cv:.1f}%) sugiere falta de control.")
 else:
-    print("El flujo de camiones es muy estable")
+    print(f"Flujo ESTABLE: La variación ({cv:.1f}%) es aceptable.")
+
 
         ### AHORA EXPORTAREMOS KPI PARA PODER MOSTRARLOS EN POWER BI ###
 datos_kpi={              #aqui estamos creando el diccionario 
@@ -88,5 +98,5 @@ datos_kpi={              #aqui estamos creando el diccionario
     }
 df_kpis=pd.DataFrame(datos_kpi) #TENEMOS QUE CONVERTIR EL DICCIONARIO EN UN DATAFRAME  PARA  ASI CONVERTIR LOS DATOS SUELTOS DEL DICCIONARIO EN UNA TABLA
 archivo_kpis="resumen_kpis.csv"
-df_kpis.to_csv(archivo_kpis,index=False, sep=",",decimal=",dd") #pasamos el dataframe a csv, guardandola como archivo_kpis que es resumen_kpis.csv, y el index fasle es para que no tenga indice la tabla
+df_kpis.to_csv(archivo_kpis,index=False, sep=",",decimal=",") #pasamos el dataframe a csv, guardandola como archivo_kpis que es resumen_kpis.csv, y el index fasle es para que no tenga indice la tabla
 print(f"Archivo KPIS exportado correctamente a {archivo_kpis}")
