@@ -3,7 +3,7 @@
 Este proyecto es una herramienta de **Business Intelligence** desarrollada en Python. Su objetivo es monitorizar la eficiencia de un centro logístico comparando la planificación (camiones previstos) con la operativa real (camiones que han llegado), detectando así niveles de inestabilidad mediante análisis estadístico.
 
 ## Propósito del Proyecto y lógica de negocio
-En el sector de la **Logística y Supply Chain**, la variabilidad es el factor que más encarece la operativa, ya que un flujo inestable puede provocar sobrecoste por horas extra o tiempos muertos, cuellos de botella por saturación de muelles o falta de fiabilidad en la previsión que genera incapacidad para comprometrse con plazos de entrega.
+En el sector de la **Logística y Supply Chain**, la variabilidad es uno de los factores que más encarece la operativa, ya que un flujo inestable puede provocar sobrecoste por horas extra o tiempos muertos, cuellos de botella por saturación de muelles o falta de fiabilidad en la previsión que genera incapacidad para comprometrse con plazos de entrega.
 Este programa no solo registra datos, sino que evalúa la **estabilidad del almacén**. Un flujo con alta desviación estándar indica una operativa caótica, dificultando la planificación de recursos humanos y maquinaria. Algunos días llegan ***muchos*** camiones, saturando muelles y generando horas extra; otros días llegan ***pocos***, dejando personal y recursos infrautilizados.
 En ***ambos casos se producen sobrecostes*** operativos.
 ## Estructura de Archivos y Flujo de Datos
