@@ -39,7 +39,7 @@ El rango de operativa estable se define estadísticamente como el intervalo dond
 Es decir, que llegue un número de camiones que se situe en ese intervalo ocurre el 68% de las veces (dias)
 
 ### 4. Preparado para Power Bi
-El script genera un archivo `resumen_kpis.csv` optimizado. Este archivo está diseñado para ser importado directamente en herramientas de visualización de datos, permitiendo la creación de dashboards corporativos.
+El script genera un archivo `resumen_kpis.csv`. Este archivo podria ser importado en herramientas de visualización de datos, permitiendo la creación de dashboards corporativos.
 
 ## 5.Ejemplo de Salida (datos inventados)
 ```text
